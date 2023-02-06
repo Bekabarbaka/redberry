@@ -1,0 +1,15 @@
+.button {
+  padding: 18px 60px;
+  border-radius: 4px;
+  border: none;
+  background: #6b40e3;
+  color: #ffffff;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  letter-spacing: 0.08em;
+}

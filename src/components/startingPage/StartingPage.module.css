@@ -1,0 +1,69 @@
+.background {
+  background-image: url("../startingPage/startingPageImages/shutterstock.png");
+  width: 100%;
+  height: 100%;
+  background-size: auto;
+}
+
+.redberryImage {
+  position: absolute;
+  width: 236px;
+  height: 38px;
+  left: 70px;
+  top: 25px;
+}
+
+.redberrySign {
+  position: absolute;
+  width: 299px;
+  height: 299px;
+  left: 1076px;
+  top: 473px;
+}
+
+.addResumeBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 60px;
+  gap: 20px;
+
+  position: absolute;
+  width: 464px;
+  height: 60px;
+  left: 728px;
+  top: 513px;
+
+  background: #1a1a1a;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.addResume {
+  width: 212px;
+  height: 24px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.border {
+  border-bottom: #1a1a1a solid 1px;
+  position: absolute;
+  height: 0px;
+  width: 1780px;
+  left: 70px;
+  right: 70px;
+  top: 89px;
+}

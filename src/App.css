@@ -1,38 +1,23 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("./fontStyle/HelveticaNeue-01.ttf");
+  src: url("./fontStyle/HelveticaNeue-Bold-02.ttf");
+  src: url("./fontStyle/HelveticaNeue-BoldItalic-04.ttf");
+  src: url("./fontStyle/HelveticaNeue-CondensedBlack-10.ttf");
+  src: url("./fontStyle/HelveticaNeue-CondensedBold-05.ttf");
+  src: url("./fontStyle/HelveticaNeue-Italic-03.ttf");
+  src: url("./fontStyle/HelveticaNeue-Light-08.ttf");
+  src: url("./fontStyle/HelveticaNeue-LightItalic-09.ttf");
+  src: url("./fontStyle/HelveticaNeue-Medium-11.ttf");
+  src: url("./fontStyle/HelveticaNeue-MediumItalic-12.ttf");
+  src: url("./fontStyle/HelveticaNeue-Thin-13.ttf");
+  src: url("./fontStyle/HelveticaNeue-ThinItalic-14.ttf");
+  src: url("./fontStyle/HelveticaNeue-UltraLight-06.ttf");
+  src: url("./fontStyle/HelveticaNeue-UltraLightItalic-07.ttf");
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  width: 1920px;
+  height: 1080px;
+  font-family: "Helvetica Neue";
 }

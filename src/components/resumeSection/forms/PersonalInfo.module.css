@@ -1,0 +1,165 @@
+.personalInfo {
+  width: 1098px;
+  height: 1080px;
+
+  background-color: #f9f9f9;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personalInfoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 798px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 77px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.headerTitle {
+  width: 179px;
+  height: 29px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #1a1a1a;
+}
+
+.pageNumber {
+  width: 29px;
+  height: 24px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #1a1a1a;
+}
+
+.userName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 798px;
+}
+
+.usernameSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inputTitle {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: #000000;
+
+  padding-bottom: 8px;
+}
+
+.inputName {
+  box-sizing: border-box;
+
+  width: 371px;
+  height: 48px;
+
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+}
+
+.inputHint {
+  color: #2e2e2e;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.upload {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-top: 54px;
+  margin-bottom: 54px;
+  width: 798px;
+}
+
+.uploadName {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #1a1a1a;
+}
+
+.uploadButton {
+  border-radius: 4px;
+
+  color: #ffffff;
+  background: #0e80bf;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  padding: 5px 19px;
+  margin-left: 19px;
+}
+
+.textarea {
+  box-sizing: border-box;
+
+  width: 798px;
+  height: 103px;
+
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  margin-bottom: 33px;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 798px;
+  margin-bottom: 29px;
+}
+
+.inputStyle {
+  box-sizing: border-box;
+
+  width: 798px;
+  height: 48px;
+
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+}
+
+.nextBtn {
+  position: absolute;
+
+  left: 756px;
+  top: 967px;
+}

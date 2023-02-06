@@ -1,0 +1,22 @@
+.logoBackground {
+  border-radius: 100%;
+  background: #ffffff;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  left: 48px;
+  top: 45px;
+
+  border: none;
+}
+
+.logo {
+  width: 9.21px;
+  height: 16px;
+}
