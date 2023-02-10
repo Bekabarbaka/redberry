@@ -1,3 +1,158 @@
-.eucationPage{
+.eucationPage {
+  width: 1098px;
+  height: 1080px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.educationInfoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 798px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 77px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.headerTitle {
+  width: 179px;
+  height: 29px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #1a1a1a;
+}
+
+.pageNumber {
+  width: 29px;
+  height: 24px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #1a1a1a;
+}
+
+.inputTitle {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+.inputHint {
+  color: #2e2e2e;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 798px;
+  margin-bottom: 31px;
+}
+
+.inputStyle {
+  box-sizing: border-box;
+
+  width: 798px;
+  height: 48px;
+
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.degreeInputSection {
+  width: 789px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.degreeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectDegree {
+  box-sizing: border-box;
+
+  width: 371px;
+  height: 48px;
+
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.textareaSection {
+  width: 789px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #c1c1c1;
+  padding-bottom: 53px;
+  margin-bottom: 45px;
+  margin-top: 34px;
+}
+
+.textareaInput {
+  box-sizing: border-box;
+
+  width: 798px;
+  height: 179px;
+  margin-top: 8px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+}
+
+.btnContainer {
+  width: 798px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 200px;
+}
+
+.addMoreSchoolBtn {
+  padding: 18px 60px;
+  border: none;
+  background: #62a1eb;
+  border-radius: 4px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.nextPrevBtn {
+  width: 798px;
+  display: flex;
+  justify-content: space-between;
 }

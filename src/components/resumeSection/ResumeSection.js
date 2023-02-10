@@ -4,10 +4,10 @@ import Experience from "./forms/Experience";
 import PersonalInfo from "./forms/PersonalInfo";
 import Resume from "./resume/Resume";
 import classes from "./ResumeSection.module.css";
+import RestartBtn from "../UI/RestartBtn";
 
 const ResumeSection = (props) => {
-  const [turnSecontPage, setTurnSecondPage] = useState(false);
-  const [turnThirdPage, setTurnThirdPage] = useState('');
+  const [turnPage, setTurnPage] = useState("1");
 
   const restartHandler = () => {
     props.setStartResume(false);
@@ -15,20 +15,15 @@ const ResumeSection = (props) => {
 
   return (
     <div className={classes.resumeSection}>
-      {turnSecontPage || (
+      <RestartBtn restartHandler={restartHandler} />
+      {turnPage === "1" && (
         <PersonalInfo
+          setTurnPage={setTurnPage}
           restartHandler={restartHandler}
-          setTurnSecondPage={setTurnSecondPage}
         />
       )}
-      {turnSecontPage && (
-        <Experience
-          restartHandler={restartHandler}
-          setTurnSecondPage={setTurnSecondPage}
-          setTurnThirdPage={setTurnThirdPage}
-        />
-      )}
-      {turnThirdPage === '1' && <Education />}
+      {turnPage === "2" && <Experience setTurnPage={setTurnPage} />}
+      {turnPage === "3" && <Education setTurnPage={setTurnPage} />}
 
       <Resume />
     </div>

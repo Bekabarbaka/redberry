@@ -1,5 +1,5 @@
 import classes from "./Experience.module.css";
-import RestartBtn from "../../UI/RestartBtn";
+
 import Button from "../../UI/Button";
 
 const Experience = (props) => {
@@ -9,8 +9,6 @@ const Experience = (props) => {
         <h2 className={classes.headerTitle}>გამოცდილება</h2>
         <p className={classes.pageNumber}>2/3</p>
       </div>
-
-      <RestartBtn restartHandler={props.restartHandler} />
 
       <div className={classes.inputSection}>
         <label className={classes.inputTitle}>თანამდებობა</label>
@@ -61,15 +59,14 @@ const Experience = (props) => {
       <div className={classes.nextPrevBtn}>
         <Button
           onClick={() => {
-            props.setTurnSecondPage(false);
+            props.setTurnPage("1");
           }}
         >
           უკან
         </Button>
         <Button
           onClick={() => {
-            props.setTurnSecondPage(false);
-            props.setTurnThirdPage("1");
+            props.setTurnPage("3");
           }}
         >
           შემდეგ

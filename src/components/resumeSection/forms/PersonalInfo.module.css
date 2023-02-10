@@ -80,6 +80,19 @@
   background: #ffffff;
   border: 1px solid #bcbcbc;
   border-radius: 4px;
+  outline: none;
+}
+
+.isValidName {
+  position: absolute;
+  left: 490px;
+  top: 210px;
+}
+
+.inValidName {
+  position: absolute;
+  left: 532px;
+  top: 210px;
 }
 
 .inputHint {
@@ -90,6 +103,7 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
+  margin: 0;
 }
 
 .upload {
@@ -162,4 +176,12 @@
 
   left: 756px;
   top: 967px;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.isvalid {
+  border-color: #98e37e;
 }
