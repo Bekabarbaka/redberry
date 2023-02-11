@@ -156,3 +156,27 @@
   display: flex;
   justify-content: space-between;
 }
+
+.invalid {
+  border-color: red;
+}
+
+.isvalid {
+  border-color: #98e37e;
+}
+
+.inValidSchool {
+  position: absolute;
+  left: 961px;
+  top: 210px;
+}
+
+.isValidSchool {
+  position: absolute;
+  left: 916px;
+  top: 210px;
+}
+
+.fill {
+  border-color: #98e37e;
+}

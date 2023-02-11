@@ -13,13 +13,21 @@ const ResumeSection = (props) => {
     props.setStartResume(false);
   };
 
+  const myprops = {
+    setTurnPage,
+    restartHandler,
+  };
+
+  console.log(props);
+
   return (
     <div className={classes.resumeSection}>
       <RestartBtn restartHandler={restartHandler} />
       {turnPage === "1" && (
         <PersonalInfo
-          setTurnPage={setTurnPage}
-          restartHandler={restartHandler}
+          // setTurnPage={setTurnPage}
+          // restartHandler={restartHandler}
+          myprops={myprops}
         />
       )}
       {turnPage === "2" && <Experience setTurnPage={setTurnPage} />}

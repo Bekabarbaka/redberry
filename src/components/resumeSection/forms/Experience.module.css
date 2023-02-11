@@ -154,8 +154,48 @@
   color: #ffffff;
 }
 
-.nextPrevBtn{
+.nextPrevBtn {
   width: 798px;
   display: flex;
   justify-content: space-between;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.isvalid {
+  border-color: #98e37e;
+}
+
+.inValidPosition {
+  position: absolute;
+  left: 961px;
+  top: 210px;
+}
+
+.isValidPosition {
+  position: absolute;
+  left: 916px;
+  top: 210px;
+}
+
+.inValidEmployer {
+  position: absolute;
+  left: 961px;
+  top: 346px;
+}
+
+.isValidEmployer {
+  position: absolute;
+  left: 916px;
+  top: 346px;
+}
+
+.nameInvalid {
+  color: red;
+}
+
+.fill {
+  border-color: #98e37e;
 }

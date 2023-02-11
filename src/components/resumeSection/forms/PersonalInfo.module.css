@@ -95,6 +95,18 @@
   top: 210px;
 }
 
+.isValidSecondName {
+  position: absolute;
+  left: 916px;
+  top: 210px;
+}
+
+.inValidSecondName {
+  position: absolute;
+  left: 961px;
+  top: 210px;
+}
+
 .inputHint {
   color: #2e2e2e;
 
@@ -152,6 +164,10 @@
   margin-bottom: 33px;
 }
 
+.textareaFill {
+  border-color: #98e37e;
+}
+
 .inputSection {
   display: flex;
   flex-direction: column;
@@ -171,6 +187,30 @@
   border-radius: 4px;
 }
 
+.isValidEmail {
+  position: absolute;
+  left: 916px;
+  top: 669px;
+}
+
+.inValidEmail {
+  position: absolute;
+  left: 961px;
+  top: 669px;
+}
+
+.isValidPhone {
+  position: absolute;
+  left: 916px;
+  top: 796px;
+}
+
+.inValidPhone {
+  position: absolute;
+  left: 961px;
+  top: 796px;
+}
+
 .nextBtn {
   position: absolute;
 
@@ -184,4 +224,8 @@
 
 .isvalid {
   border-color: #98e37e;
+}
+
+.nameInvalid {
+  color: red;
 }
