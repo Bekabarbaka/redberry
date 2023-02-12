@@ -9,31 +9,89 @@ import RestartBtn from "../UI/RestartBtn";
 const ResumeSection = (props) => {
   const [turnPage, setTurnPage] = useState("1");
 
+  const [firstName, setFirstName] = useState("");
+  const [secondName, setSecondName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const [position, setPosition] = useState("");
+  const [employer, setEmployer] = useState("");
+  const [startingDate, setStartingDate] = useState("");
+  const [endingDate, setEndingDate] = useState("");
+  const [aboutExperience, setAboutExperience] = useState("");
+
+  const [school, setSchool] = useState("");
+  const [degree, setDegree] = useState("");
+  const [schoolEndingDate, setSchoolEndingDate] = useState("");
+  const [aboutEducation, setAboutEucation] = useState("");
+
+  const [personalInfoSection, setPersonalInfoSection] = useState(false);
+
   const restartHandler = () => {
     props.setStartResume(false);
   };
 
-  const myprops = {
+  const personalInfo = {
+    turnPage,
     setTurnPage,
     restartHandler,
+    firstName,
+    setFirstName,
+    secondName,
+    setSecondName,
+    photo,
+    setPhoto,
+    aboutMe,
+    setAboutMe,
+    email,
+    setEmail,
+    phoneNumber,
+    setPhoneNumber,
+    setPersonalInfoSection,
+    personalInfoSection,
   };
 
-  console.log(props);
+  const experience = {
+    setTurnPage,
+    position,
+    setPosition,
+    employer,
+    setEmployer,
+    startingDate,
+    setStartingDate,
+    endingDate,
+    setEndingDate,
+    aboutExperience,
+    setAboutExperience,
+  };
+
+  const education = {
+    turnPage,
+    setTurnPage,
+    school,
+    setSchool,
+    degree,
+    setDegree,
+    schoolEndingDate,
+    setSchoolEndingDate,
+    aboutEducation,
+    setAboutEucation,
+  };
 
   return (
     <div className={classes.resumeSection}>
       <RestartBtn restartHandler={restartHandler} />
-      {turnPage === "1" && (
-        <PersonalInfo
-          // setTurnPage={setTurnPage}
-          // restartHandler={restartHandler}
-          myprops={myprops}
-        />
-      )}
-      {turnPage === "2" && <Experience setTurnPage={setTurnPage} />}
-      {turnPage === "3" && <Education setTurnPage={setTurnPage} />}
+      {turnPage === "1" && <PersonalInfo personalInfo={personalInfo} />}
+      {turnPage === "2" && <Experience experience={experience} />}
+      {turnPage === "3" && <Education education={education} />}
 
-      <Resume />
+      <Resume
+        personalInfo={personalInfo}
+        experience={experience}
+        education={education}
+      />
     </div>
   );
 };

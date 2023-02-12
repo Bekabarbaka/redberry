@@ -1,19 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../UI/Button";
 import IsNotValidLogo from "../../UI/IsNotValidLogo";
 import IsValidLogo from "../../UI/IsValidLogo";
 import classes from "./PersonalInfo.module.css";
 
 const PersonalInfo = (props) => {
-  const [firstName, setFirstName] = useState("");
   const [firstNameInValid, setFirstNameInValid] = useState();
-  const [secondName, setSecondName] = useState("");
   const [secondNameInvalid, setSecondNameInvalid] = useState();
-  const [photo, setPhoto] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
-  const [email, setEmail] = useState("");
   const [emailIsvalid, setEmailIsvalid] = useState();
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberIsvalid, setPhoneNumberIsvalid] = useState();
 
   const regEx = /^[\u10A0-\u10FF]*$/;
@@ -21,56 +15,92 @@ const PersonalInfo = (props) => {
   const phoneReGex = /^(\+?995)?(79\d{7}|5\d{8})$/;
 
   const firstNameChangeHandler = (event) => {
-    setFirstName(event.target.value);
+    props.personalInfo.setFirstName(event.target.value);
+
+    localStorage.setItem("firstName", event.target.value);
   };
 
   const secondNameChangeHandler = (event) => {
-    setSecondName(event.target.value);
+    props.personalInfo.setSecondName(event.target.value);
+
+    localStorage.setItem("secondName", event.target.value);
   };
 
   const photoChangeHandler = (event) => {
-    setPhoto(URL.createObjectURL(event.target.files[0]));
-    console.log(event.target.files[0]);
+    props.personalInfo.setPhoto(URL.createObjectURL(event.target.files[0]));
+
+    localStorage.setItem("photo", URL.createObjectURL(event.target.files[0]));
   };
 
   const aboutMeChangeHandler = (event) => {
-    setAboutMe(event.target.value);
+    props.personalInfo.setAboutMe(event.target.value);
+
+    localStorage.setItem("aboutMe", event.target.value);
   };
 
   const emailChangeHandler = (event) => {
-    setEmail(event.target.value);
+    props.personalInfo.setEmail(event.target.value);
+
+    localStorage.setItem("email", event.target.value);
   };
 
   const phoneNumberChangeHandler = (event) => {
-    setPhoneNumber(event.target.value);
+    props.personalInfo.setPhoneNumber(event.target.value);
+
+    localStorage.setItem("phoneNumber", event.target.value);
   };
 
   const validateFirstNamehandler = () => {
-    const firstNameGe = regEx.test(firstName);
-    setFirstNameInValid(firstName.trim().length < 2 || !firstNameGe);
+    const firstNameGe = regEx.test(props.personalInfo.firstName);
+    setFirstNameInValid(
+      props.personalInfo.firstName.trim().length < 2 || !firstNameGe
+    );
   };
 
   const validateSecondNamehandler = () => {
-    const secondNameGe = regEx.test(secondName);
-    setSecondNameInvalid(secondName.trim().length < 2 || !secondNameGe);
+    const secondNameGe = regEx.test(props.personalInfo.secondName);
+    setSecondNameInvalid(
+      props.personalInfo.secondName.trim().length < 2 || !secondNameGe
+    );
   };
 
   const validateEmailhandler = () => {
-    setEmailIsvalid(emailReGex.test(email));
+    setEmailIsvalid(emailReGex.test(props.personalInfo.email));
   };
 
   const validatePhoneNumberhandler = () => {
-    setPhoneNumberIsvalid(phoneReGex.test(phoneNumber));
+    setPhoneNumberIsvalid(phoneReGex.test(props.personalInfo.phoneNumber));
   };
 
+  const validatePersonalInfoHandler = (event) => {
+    event.preventDefault();
+
+    firstNameInValid === false &&
+    firstNameInValid === false &&
+    emailIsvalid === true &&
+    phoneNumberIsvalid === true
+      ? props.personalInfo.setTurnPage("2")
+      : props.personalInfo.setTurnPage("1");
+  };
+
+  useEffect(() => {
+    props.personalInfo.setFirstName(localStorage.getItem("firstName"));
+    props.personalInfo.setSecondName(localStorage.getItem("secondName"));
+    props.personalInfo.setPhoto(localStorage.getItem("photo"));
+    props.personalInfo.setAboutMe(localStorage.getItem("aboutMe"));
+    props.personalInfo.setEmail(localStorage.getItem("email"));
+    props.personalInfo.setPhoneNumber(localStorage.getItem("phoneNumber"));
+  });
+
   return (
-    <form className={classes.personalInfo}>
+    <form
+      className={classes.personalInfo}
+      onSubmit={validatePersonalInfoHandler}
+    >
       <div className={classes.personalInfoHeader}>
         <h2 className={classes.headerTitle}>პირადი ინფო</h2>
         <p className={classes.pageNumber}>1/3</p>
       </div>
-
-      <img src={photo} alt="fdd" />
 
       <div className={classes.userName}>
         <div className={classes.usernameSection}>
@@ -91,7 +121,8 @@ const PersonalInfo = (props) => {
             placeholder="ანზორ"
             onChange={firstNameChangeHandler}
             onBlur={validateFirstNamehandler}
-            value={firstName}
+            value={props.personalInfo.firstName}
+            required
           />
           {firstNameInValid === false && (
             <IsValidLogo className={classes.isValidName} />
@@ -121,7 +152,8 @@ const PersonalInfo = (props) => {
             placeholder="მუმლაძე"
             onChange={secondNameChangeHandler}
             onBlur={validateSecondNamehandler}
-            value={secondName}
+            value={props.personalInfo.secondName}
+            required
           />
 
           {secondNameInvalid === false && (
@@ -149,10 +181,15 @@ const PersonalInfo = (props) => {
         >{`ჩემ შესახებ (არასავალდებულო)`}</label>
         <textarea
           className={`${classes.textarea} 
-          ${aboutMe.trim().length > 0 ? classes.textareaFill : ""}`}
+          ${
+            props.personalInfo.aboutMe !== null &&
+            props.personalInfo.aboutMe.trim().length !== 0
+              ? classes.textareaFill
+              : ""
+          }`}
           placeholder="ზოგადი ინფო შენს შესახებ"
           onChange={aboutMeChangeHandler}
-          value={aboutMe}
+          value={props.personalInfo.aboutMe}
         />
       </div>
 
@@ -173,7 +210,7 @@ const PersonalInfo = (props) => {
           placeholder="anzorr666@redberry.ge"
           onChange={emailChangeHandler}
           onBlur={validateEmailhandler}
-          value={email}
+          value={props.personalInfo.email}
         />
         {emailIsvalid === true && (
           <IsValidLogo className={classes.isValidEmail} />
@@ -202,7 +239,7 @@ const PersonalInfo = (props) => {
           placeholder="+995 551 12 34 56"
           onChange={phoneNumberChangeHandler}
           onBlur={validatePhoneNumberhandler}
-          value={phoneNumber}
+          value={props.personalInfo.phoneNumber}
         />
         {phoneNumberIsvalid === true && (
           <IsValidLogo className={classes.isValidPhone} />
@@ -218,8 +255,9 @@ const PersonalInfo = (props) => {
 
       <Button
         className={classes.nextBtn}
+        type="submit"
         onClick={() => {
-          props.myprops.setTurnPage("2");
+          props.personalInfo.setPersonalInfoSection(true);
         }}
       >
         შემდეგი

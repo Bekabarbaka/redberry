@@ -1,35 +1,48 @@
 import classes from "./Education.module.css";
 import Button from "../../UI/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IsValidLogo from "../../UI/IsValidLogo";
 import IsNotValidLogo from "../../UI/IsNotValidLogo";
 
 const Education = (props) => {
-  const [school, setSchool] = useState("");
   const [schoolIsvalid, setSchoolIsvalid] = useState();
-  const [degree, setDegree] = useState("");
-  const [schoolEndingDate, setSchoolEndingDate] = useState("");
-  const [aboutEducation, setAboutEucation] = useState("");
 
   const schoolChangeHandler = (event) => {
-    setSchool(event.target.value);
+    props.education.setSchool(event.target.value);
+
+    localStorage.setItem("school", event.target.value);
   };
 
   const degreeChangeHandler = (event) => {
-    setDegree(event.target.value);
+    props.education.setDegree(event.target.value);
+
+    localStorage.setItem("degree", event.target.value);
   };
 
   const schoolEndingDateChangeHandler = (event) => {
-    setSchoolEndingDate(event.target.value);
+    props.education.setSchoolEndingDate(event.target.value);
+
+    localStorage.setItem("schoolEndingDate", event.target.value);
   };
 
   const aboutEducationChangeHandler = (event) => {
-    setAboutEucation(event.target.value);
+    props.education.setAboutEucation(event.target.value);
+
+    localStorage.setItem("aboutAducation", event.target.value);
   };
 
   const validateSchoolHandler = () => {
-    setSchoolIsvalid(school.trim().length < 2);
+    setSchoolIsvalid(props.education.school.trim().length < 2);
   };
+
+  useEffect(() => {
+    props.education.setSchool(localStorage.getItem("school"));
+    props.education.setDegree(localStorage.getItem("degree"));
+    props.education.setSchoolEndingDate(
+      localStorage.getItem("schoolEndingDate")
+    );
+    props.education.setAboutEucation(localStorage.getItem("aboutAducation"));
+  });
 
   return (
     <form className={classes.eucationPage}>
@@ -49,7 +62,7 @@ const Education = (props) => {
           placeholder="სასწავლებელი"
           onChange={schoolChangeHandler}
           onBlur={validateSchoolHandler}
-          value={school}
+          value={props.education.school}
         />
         {schoolIsvalid === false && (
           <IsValidLogo className={classes.isValidSchool} />
@@ -66,10 +79,13 @@ const Education = (props) => {
           <label className={classes.inputTitle}>ხარისხი</label>
           <select
             className={`${classes.selectDegree} ${
-              degree.trim().length > 0 ? classes.fill : ""
+              props.education.degree !== null &&
+              props.education.degree.trim().length > 0
+                ? classes.fill
+                : ""
             }`}
             onChange={degreeChangeHandler}
-            value={degree}
+            value={props.education.degree}
           >
             <option value="" disabled selected hidden>
               Choose a drink
@@ -84,10 +100,13 @@ const Education = (props) => {
           <input
             type="date"
             className={`${classes.selectDegree} ${
-              schoolEndingDate.trim().length > 0 ? classes.fill : ""
+              props.education.schoolEndingDate !== null &&
+              props.education.schoolEndingDate.trim().length > 0
+                ? classes.fill
+                : ""
             }`}
             onChange={schoolEndingDateChangeHandler}
-            value={schoolEndingDate}
+            value={props.education.schoolEndingDate}
           />
         </div>
       </div>
@@ -97,10 +116,13 @@ const Education = (props) => {
         <textarea
           placeholder="განათლების აღწერა"
           className={`${classes.textareaInput} ${
-            aboutEducation.trim().length > 0 ? classes.fill : ""
+            props.education.aboutEducation !== null &&
+            props.education.aboutEducation.trim().length > 0
+              ? classes.fill
+              : ""
           }`}
           onChange={aboutEducationChangeHandler}
-          value={aboutEducation}
+          value={props.education.aboutEducation}
         ></textarea>
       </div>
 
@@ -113,14 +135,14 @@ const Education = (props) => {
       <div className={classes.nextPrevBtn}>
         <Button
           onClick={() => {
-            props.setTurnPage("2");
+            props.education.setTurnPage("2");
           }}
         >
           უკან
         </Button>
         <Button
           onClick={() => {
-            props.setTurnPage("");
+            props.education.setTurnPage("");
           }}
         >
           შემდეგ
