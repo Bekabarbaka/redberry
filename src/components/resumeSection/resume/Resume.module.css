@@ -1,10 +1,11 @@
 .resume {
   width: 822px;
   height: 1080px;
-  background-color: lightgreen;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   overflow: hidden;
 }
@@ -13,6 +14,7 @@
   width: 662;
   display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
 
   margin: 0;
   padding-bottom: 19px;
@@ -24,6 +26,11 @@
   flex-direction: column;
   align-items: center;
   margin-top: 68px;
+}
+
+.photoSection {
+  height: 246px;
+  width: 246px;
 }
 
 .photo {
@@ -171,14 +178,34 @@
   color: #919191;
   margin-top: 7px;
   margin-bottom: 0;
+  margin-right: 5px;
 }
 
-.aboutExperience{
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 22px;
-text-transform: lowercase;
-color: #000000;
+.aboutExperience {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: lowercase;
+  color: #000000;
+}
+
+.experienceDate {
+  display: flex;
+}
+
+.resumeBorder {
+  border: 0.8px solid #000000;
+
+  height: 974px;
+}
+
+.resumeLogo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: 78px;
+  /* top: 994px; */
+  bottom: 44px;
 }

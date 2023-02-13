@@ -11,31 +11,31 @@ const Experience = (props) => {
   const positionChangeHandler = (event) => {
     props.experience.setPosition(event.target.value);
 
-    localStorage.setItem("position", event.target.value);
+    sessionStorage.setItem("position", event.target.value);
   };
 
   const employerChangeHandler = (event) => {
     props.experience.setEmployer(event.target.value);
 
-    localStorage.setItem("employer", event.target.value);
+    sessionStorage.setItem("employer", event.target.value);
   };
 
   const startingDateChangeHandler = (event) => {
     props.experience.setStartingDate(event.target.value);
 
-    localStorage.setItem("startingDate", event.target.value);
+    sessionStorage.setItem("startingDate", event.target.value);
   };
 
   const endingDateChangeHandler = (event) => {
     props.experience.setEndingDate(event.target.value);
 
-    localStorage.setItem("endingDate", event.target.value);
+    sessionStorage.setItem("endingDate", event.target.value);
   };
 
   const aboutExperienceChangeHandler = (event) => {
     props.experience.setAboutExperience(event.target.value);
 
-    localStorage.setItem("aboutExperience", event.target.value);
+    sessionStorage.setItem("aboutExperience", event.target.value);
   };
 
   const validatePositionHandler = () => {
@@ -46,18 +46,35 @@ const Experience = (props) => {
     setEmployerIsvalid(props.experience.employer.trim().length < 2);
   };
 
+  const validateExperienceHandler = () => {
+    if (
+      !positionIsvalid &&
+      !employerIsvalid &&
+      props.experience.startingDate &&
+      props.experience.endingDate &&
+      props.experience.aboutExperience
+    ) {
+      props.experience.setTurnPage("3");
+    } else {
+      props.experience.setTurnPage("2");
+    }
+  };
+
   useEffect(() => {
-    props.experience.setPosition(localStorage.getItem("position"));
-    props.experience.setEmployer(localStorage.getItem("employer"));
-    props.experience.setStartingDate(localStorage.getItem("startingDate"));
-    props.experience.setEndingDate(localStorage.getItem("endingDate"));
+    props.experience.setPosition(sessionStorage.getItem("position"));
+    props.experience.setEmployer(sessionStorage.getItem("employer"));
+    props.experience.setStartingDate(sessionStorage.getItem("startingDate"));
+    props.experience.setEndingDate(sessionStorage.getItem("endingDate"));
     props.experience.setAboutExperience(
-      localStorage.getItem("aboutExperience")
+      sessionStorage.getItem("aboutExperience")
     );
   });
 
   return (
-    <form className={classes.experiencePage} id="form-wrapper">
+    <form
+      className={classes.experiencePage}
+      onSubmit={validateExperienceHandler}
+    >
       <div className={classes.experienceInfoHeader}>
         <h2 className={classes.headerTitle}>გამოცდილება</h2>
         <p className={classes.pageNumber}>2/3</p>
@@ -174,12 +191,9 @@ const Experience = (props) => {
       </div>
 
       <div className={classes.btnContainer}>
-        <button
-          className={classes.addMoreExperienceBtn}
-          // onClick={addFormHandler}
-        >
+        <div className={classes.addMoreExperienceBtn} default>
           მეტი გამოცდილების დამატება
-        </button>
+        </div>
       </div>
 
       <div className={classes.nextPrevBtn}>
@@ -191,8 +205,9 @@ const Experience = (props) => {
           უკან
         </Button>
         <Button
+          type="submit"
           onClick={() => {
-            props.experience.setTurnPage("3");
+            props.experience.setExperienceSection(true)
           }}
         >
           შემდეგ

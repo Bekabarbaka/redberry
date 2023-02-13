@@ -7,7 +7,7 @@ const RestartBtn = (props) => {
       // type={props.type || "button"}
       onClick={() => {
         props.restartHandler();
-        localStorage.clear();
+        sessionStorage.clear();
       }}
     >
       <svg className={classes.logo}>

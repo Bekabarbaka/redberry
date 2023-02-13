@@ -6,46 +6,78 @@ import IsNotValidLogo from "../../UI/IsNotValidLogo";
 
 const Education = (props) => {
   const [schoolIsvalid, setSchoolIsvalid] = useState();
+  const [degree, setDegree] = useState();
 
   const schoolChangeHandler = (event) => {
     props.education.setSchool(event.target.value);
 
-    localStorage.setItem("school", event.target.value);
+    sessionStorage.setItem("school", event.target.value);
   };
 
   const degreeChangeHandler = (event) => {
     props.education.setDegree(event.target.value);
 
-    localStorage.setItem("degree", event.target.value);
+    sessionStorage.setItem("degree", event.target.value);
   };
 
   const schoolEndingDateChangeHandler = (event) => {
     props.education.setSchoolEndingDate(event.target.value);
 
-    localStorage.setItem("schoolEndingDate", event.target.value);
+    sessionStorage.setItem("schoolEndingDate", event.target.value);
   };
 
   const aboutEducationChangeHandler = (event) => {
     props.education.setAboutEucation(event.target.value);
 
-    localStorage.setItem("aboutAducation", event.target.value);
+    sessionStorage.setItem("aboutAducation", event.target.value);
   };
 
   const validateSchoolHandler = () => {
     setSchoolIsvalid(props.education.school.trim().length < 2);
   };
 
+  const getApiData = async () => {
+    const response = await fetch(
+      "https://resume.redberryinternship.ge/api/degrees"
+    ).then((response) => response.json());
+
+    setDegree(response);
+  };
+
   useEffect(() => {
-    props.education.setSchool(localStorage.getItem("school"));
-    props.education.setDegree(localStorage.getItem("degree"));
+    getApiData();
+  }, []);
+
+  useEffect(() => {
+    props.education.setSchool(sessionStorage.getItem("school"));
+    props.education.setDegree(sessionStorage.getItem("degree"));
     props.education.setSchoolEndingDate(
-      localStorage.getItem("schoolEndingDate")
+      sessionStorage.getItem("schoolEndingDate")
     );
-    props.education.setAboutEucation(localStorage.getItem("aboutAducation"));
+    props.education.setAboutEucation(sessionStorage.getItem("aboutAducation"));
   });
 
+  const validateEducationHandler = () => {
+    if (
+      schoolIsvalid === false &&
+      props.education.degree &&
+      props.education.schoolEndingDate &&
+      props.education.aboutEducation
+    ) {
+      props.education.setTurnPage("");
+    }
+    if (props.education.school === undefined) {
+      props.education.setTurnPage(3);
+    } else {
+      props.education.setTurnPage(3);
+    }
+  };
+
   return (
-    <form className={classes.eucationPage}>
+    <form
+      className={`${classes.eucationPage}  `}
+      onSubmit={validateEducationHandler}
+    >
       <div className={classes.educationInfoHeader}>
         <h2 className={classes.headerTitle}>განათლება</h2>
         <p className={classes.pageNumber}>3/3</p>
@@ -88,10 +120,14 @@ const Education = (props) => {
             value={props.education.degree}
           >
             <option value="" disabled selected hidden>
-              Choose a drink
+              აირჩიეთ ხარისხი
             </option>
-            <option>beka</option>
-            <option>barbakadze</option>
+            {degree &&
+              degree.map((degree, index) => (
+                <option key={index} className={classes.degree}>
+                  {degree.title}
+                </option>
+              ))}
           </select>
         </div>
 
@@ -127,9 +163,9 @@ const Education = (props) => {
       </div>
 
       <div className={classes.btnContainer}>
-        <button className={classes.addMoreSchoolBtn}>
+        <div className={classes.addMoreSchoolBtn}>
           სხვა სასწავლებლის დამატება
-        </button>
+        </div>
       </div>
 
       <div className={classes.nextPrevBtn}>
@@ -141,8 +177,10 @@ const Education = (props) => {
           უკან
         </Button>
         <Button
+          type="submit"
           onClick={() => {
-            props.education.setTurnPage("");
+            props.education.setEducationSection(true);
+            props.education.setPopUp(true);
           }}
         >
           შემდეგ

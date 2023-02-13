@@ -5,6 +5,7 @@ import PersonalInfo from "./forms/PersonalInfo";
 import Resume from "./resume/Resume";
 import classes from "./ResumeSection.module.css";
 import RestartBtn from "../UI/RestartBtn";
+import FinalPopUp from "./resume/FinalPopUp";
 
 const ResumeSection = (props) => {
   const [turnPage, setTurnPage] = useState("1");
@@ -28,6 +29,9 @@ const ResumeSection = (props) => {
   const [aboutEducation, setAboutEucation] = useState("");
 
   const [personalInfoSection, setPersonalInfoSection] = useState(false);
+  const [experienceSection, setExperienceSection] = useState(false);
+  const [educationSection, setEducationSection] = useState(false);
+  const [popUp, setPopUp] = useState(false);
 
   const restartHandler = () => {
     props.setStartResume(false);
@@ -65,6 +69,8 @@ const ResumeSection = (props) => {
     setEndingDate,
     aboutExperience,
     setAboutExperience,
+    setExperienceSection,
+    experienceSection,
   };
 
   const education = {
@@ -78,6 +84,10 @@ const ResumeSection = (props) => {
     setSchoolEndingDate,
     aboutEducation,
     setAboutEucation,
+    educationSection,
+    setEducationSection,
+    setPopUp,
+    popUp,
   };
 
   return (
@@ -92,6 +102,8 @@ const ResumeSection = (props) => {
         experience={experience}
         education={education}
       />
+
+      {popUp && <FinalPopUp setPopUp={setPopUp} />}
     </div>
   );
 };

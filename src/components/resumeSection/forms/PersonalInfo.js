@@ -17,37 +17,37 @@ const PersonalInfo = (props) => {
   const firstNameChangeHandler = (event) => {
     props.personalInfo.setFirstName(event.target.value);
 
-    localStorage.setItem("firstName", event.target.value);
+    sessionStorage.setItem("firstName", event.target.value);
   };
 
   const secondNameChangeHandler = (event) => {
     props.personalInfo.setSecondName(event.target.value);
 
-    localStorage.setItem("secondName", event.target.value);
+    sessionStorage.setItem("secondName", event.target.value);
   };
 
   const photoChangeHandler = (event) => {
     props.personalInfo.setPhoto(URL.createObjectURL(event.target.files[0]));
 
-    localStorage.setItem("photo", URL.createObjectURL(event.target.files[0]));
+    sessionStorage.setItem("photo", URL.createObjectURL(event.target.files[0]));
   };
 
   const aboutMeChangeHandler = (event) => {
     props.personalInfo.setAboutMe(event.target.value);
 
-    localStorage.setItem("aboutMe", event.target.value);
+    sessionStorage.setItem("aboutMe", event.target.value);
   };
 
   const emailChangeHandler = (event) => {
     props.personalInfo.setEmail(event.target.value);
 
-    localStorage.setItem("email", event.target.value);
+    sessionStorage.setItem("email", event.target.value);
   };
 
   const phoneNumberChangeHandler = (event) => {
     props.personalInfo.setPhoneNumber(event.target.value);
 
-    localStorage.setItem("phoneNumber", event.target.value);
+    sessionStorage.setItem("phoneNumber", event.target.value);
   };
 
   const validateFirstNamehandler = () => {
@@ -84,12 +84,12 @@ const PersonalInfo = (props) => {
   };
 
   useEffect(() => {
-    props.personalInfo.setFirstName(localStorage.getItem("firstName"));
-    props.personalInfo.setSecondName(localStorage.getItem("secondName"));
-    props.personalInfo.setPhoto(localStorage.getItem("photo"));
-    props.personalInfo.setAboutMe(localStorage.getItem("aboutMe"));
-    props.personalInfo.setEmail(localStorage.getItem("email"));
-    props.personalInfo.setPhoneNumber(localStorage.getItem("phoneNumber"));
+    props.personalInfo.setFirstName(sessionStorage.getItem("firstName"));
+    props.personalInfo.setSecondName(sessionStorage.getItem("secondName"));
+    props.personalInfo.setPhoto(sessionStorage.getItem("photo"));
+    props.personalInfo.setAboutMe(sessionStorage.getItem("aboutMe"));
+    props.personalInfo.setEmail(sessionStorage.getItem("email"));
+    props.personalInfo.setPhoneNumber(sessionStorage.getItem("phoneNumber"));
   });
 
   return (
@@ -122,7 +122,6 @@ const PersonalInfo = (props) => {
             onChange={firstNameChangeHandler}
             onBlur={validateFirstNamehandler}
             value={props.personalInfo.firstName}
-            required
           />
           {firstNameInValid === false && (
             <IsValidLogo className={classes.isValidName} />
@@ -153,7 +152,6 @@ const PersonalInfo = (props) => {
             onChange={secondNameChangeHandler}
             onBlur={validateSecondNamehandler}
             value={props.personalInfo.secondName}
-            required
           />
 
           {secondNameInvalid === false && (
